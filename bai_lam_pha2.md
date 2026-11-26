@@ -1,57 +1,17 @@
 # BÀI LÀM PHA 2 – HACKATHON 02
 
 - **Mã đề:** 08
-- **Họ tên:**
-- **Lớp:**
+- **Họ tên:Hồ Văn Khang**
+- **Lớp:CNTT1**
 - **Link repository Pha2:**
-- **Công cụ AI đã dùng (ChatGPT/Claude/Gemini):**
+- **Công cụ AI đã dùng (ChatGPT/Claude/Gemini):chatgpt**
 
 > Pha 2 (20 phút cuối). Mỗi mục: mở cuộc trò chuyện mới, gửi nguyên văn prompt đã viết trong bai_lam_pha1.md, dán câu trả lời và link chia sẻ vào đây. Xong, kéo thả file này vào repository Pha2.
 
 ## 4.2. Trích xuất tin nhắn đặt lịch khám ra JSON
 
 **KET QUA AI**
-
-```text
-(C-Context : Bạn là nhân viên mới của nha khoa nụ cười 
-- cung cấp 3 dịch vụ : 
-    - cạo vôi răng 
-    - trám răng 
-    - tẩy trắng răng 
-                    
-R -Request : chuyển ba tin nhắn trong thẻ <tin_nhan> thành một mảng JSON gồm 3 đối tượng đúng thứ tự : TN1 , TN2 , TN3 . mỗi đối tưởng đúng 6 trường :ma_dich_vu , ngay_hen , nguoi_lon ,tre_em , khung_gio , ghi_chu 
-E-Explanation: 
- QUY TẮC CHUẨN HOÁ (5 quy tắc)
-    1. ma_dich_vu lấy theo bảng mã dịch vụ.
-    2. ngay_hen dạng YYYY-MM-DD; tin nhắn không ghi năm thì lấy năm 2026; không có ngày cụ thể thì null.
-    3. Khách không nhắc trẻ em thì tre_em là 0 và mọi khách là người lớn.
-    4. khung_gio chỉ nhận "sang", "chieu" hoặc null.
-    5. ghi_chu chỉ ghi yêu cầu đặc biệt về sức khoẻ, bệnh nền, dị ứng, tâm lý; không có thì null.
-======================================================
-HAI TIN NHẮN MẪU ĐÃ XỬ LÝ ĐÚNG (dùng làm ví dụ)
-======================================================
-
-Tin nhắn mẫu 1:
-    Đặt lịch cạo vôi răng ngày 12/11/2026 cho 1 người lớn và 2 bé, buổi sáng nha. Một bé rất sợ khoan.
-    Kết quả đúng:
-    {"ma_dich_vu": "CAOVOI", "ngay_hen": "2026-11-12", "nguoi_lon": 1, "tre_em": 2, "khung_gio": "sang", "ghi_chu": "1 bé rất sợ khoan"}
-
-Tin nhắn mẫu 2:
-    Tẩy trắng còn lịch buổi chiều không ạ, em đi 1 mình, hôm nào cũng được.
-    Kết quả đúng:
-    {"ma_dich_vu": "TAYTRANG", "ngay_hen": null, "nguoi_lon": 1, "tre_em": 0, "khung_gio": "chieu", "ghi_chu": null}
- A-Action : Đừng đọc tin nhắn áp dụng 5 quy tắc , 2 ví dụ mẫu . rồi tạo thanhf 1 mảng JSON 
- T-Tone : ngắn gọn , chính xác như bộ xử lý dữ liệu 
- E-Extras : chỉ trả về mảng Json hợp lệ , không giải thích , không chào hỏi 
-======================================================
-BA TIN NHẮN CẦN XỬ LÝ
-======================================================
-
-    TN1: Cho mình hẹn trám răng ngày 17/12 nhé, 2 người lớn với 1 bé 9 tuổi, buổi chiều.
-
-    TN2: Đặt lịch cạo vôi cho 3 người ngày 06/01/2027 ạ. Một người bị tiểu đường.
-
-    TN3: Tẩy trắng răng cuối năm còn lịch không ạ? Nhà em 4 người lớn, một người dị ứng thuốc tê, đi buổi sáng
+``` 
 [
   {
     "ma_dich_vu": "TRAMRANG",
@@ -80,7 +40,8 @@ BA TIN NHẮN CẦN XỬ LÝ
 ]
 ```
 
-**Link trò chuyện:**
+
+**Link trò chuyện:https://chatgpt.com/share/6b07e5c8-9198-83ec-af0c-bcade3c6927d**
 
 ## 4.3. Báo giá bằng Chain-of-Thought
 
@@ -133,19 +94,16 @@ Bước 6. Tổng tiền
 [RÉULT : 2.844.000 đồng]
 ```
 
-**Link trò chuyện:**
+**Link trò chuyện:Bước 1. Tiền người lớn
 
-### b) Kiểm tra kết quả AI
-Bước 1. Tiền người lớn
-
-6 người lớn sử dụng dịch vụ CAOVOI:
+6 người lớn, mỗi người cạo vôi răng 350.000 đồng.
 
 6 × 350.000 = 2.100.000 đồng
 
 Bước 2. Tiền trẻ em
 - Trẻ 7 tuổi: 350.000 × 80% = 280.000 đồng
 - Trẻ 11 tuổi: 350.000 × 80% = 280.000 đồng
-- Trẻ 4 tuổi: miễn phí = 0 đồng
+- Trẻ 4 tuổi: dưới 6 tuổi nên được miễn phí = 0 đồng
 Tổng tiền trẻ em:
 
 280.000 + 280.000 + 0 = 560.000 đồng
@@ -166,13 +124,15 @@ Tiền dịch vụ sau giảm:
 
 Bước 5. Phụ thu chụp X-quang (không giảm giá)
 
-3 × 150.000 = 450.000 đồng
+3 người × 150.000 = 450.000 đồng
 
 Bước 6. Tổng tiền
 
 2.394.000 + 450.000 = 2.844.000 đồng
 
-[RÉULT : 2.844.000 đồng]
+[RÉULT : 2.844.000 đồng]**
+**linkAI:https://chatgpt.com/share/6b07e6bb-62fc-83ec-84e2-8dfe4f154f1c**
+
 
 ## 4.4. Dây chuyền xử lý khiếu nại – kết quả Trạm 1
 
@@ -280,7 +240,7 @@ Yêu cầu:
 
 Lưu ý: Prompt Trạm 3 nên yêu cầu AI dựa hoàn toàn vào JSON Trạm 2 để tránh tự tính hoặc tự đặt mức đền bù.
 
-**Link trò chuyện:**
+**Link trò chuyện:https://chatgpt.com/share/6b07e754-7c68-83ec-b4ab-03cd9a5b1d9c**
 
 ## 4.5. Prompt chấm bài theo Rubric
 
